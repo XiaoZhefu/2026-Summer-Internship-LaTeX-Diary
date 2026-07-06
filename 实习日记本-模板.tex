@@ -1,0 +1,153 @@
+\documentclass[12pt, oneside, a4paper]{ctexart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[{top=2.54cm, bottom=2.54cm, left=3.18cm, right=3.18cm}]{geometry}
+\usepackage{graphicx}
+\usepackage[breaklinks, colorlinks=false, hidelinks]{hyperref}
+\usepackage{mathptmx}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{tikz}
+
+\pagestyle{empty}
+\setmainfont{Times New Roman}
+\setCJKmainfont[AutoFakeBold={2}]{SimSun}
+\setCJKfamilyfont{zh}{SimSun}
+\newCJKfontfamily\diarySong{SimSun}
+\newCJKfontfamily\diaryHei{SimHei}
+\newCJKfontfamily\diaryFang{FangSong}
+\newCJKfontfamily\diaryShu{FZShuTi}
+
+\newcommand{\pagecanvas}[1]{%
+  \thispagestyle{empty}%
+  \begin{tikzpicture}[remember picture, overlay]
+    #1
+  \end{tikzpicture}%
+  \null
+}
+
+\newcommand{\basewest}[3]{%
+  \node[anchor=base west, inner sep=0pt] at
+    ([xshift=#1, yshift=-#2]current page.north west) {#3};%
+}
+
+\newcommand{\basecenter}[3]{%
+  \node[anchor=base, inner sep=0pt] at
+    ([xshift=#1, yshift=-#2]current page.north west) {#3};%
+}
+
+\newcommand{\northwest}[3]{%
+  \node[anchor=north west, inner sep=0pt] at
+    ([xshift=#1, yshift=-#2]current page.north west) {#3};%
+}
+
+\newcommand{\northcenter}[3]{%
+  \node[anchor=north, inner sep=0pt] at
+    ([xshift=#1, yshift=-#2]current page.north west) {#3};%
+}
+
+\newcommand{\ruleline}[3]{%
+  \draw[line width=0.45pt]
+    ([xshift=#1, yshift=-#3]current page.north west) --
+    ([xshift=#2, yshift=-#3]current page.north west);%
+}
+
+\newcommand{\diaryFormFont}{\diaryFang\fontsize{18pt}{20pt}\selectfont}
+\newcommand{\diaryBodyFont}{\diarySong\fontsize{14pt}{19pt}\selectfont}
+\newcommand{\diaryTableFont}{\diaryFang\fontsize{15pt}{17pt}\selectfont}
+\newcommand{\diaryPageFont}{\diarySong\fontsize{16pt}{18pt}\selectfont}
+\newcommand{\fixedline}[1]{\noindent\makebox[0pt][l]{#1}\\}
+
+\newcommand{\journalpage}[1]{%
+  \pagecanvas{%
+    \basewest{147mm}{20mm}{\diaryPageFont 实\hspace{0.5em}习\hspace{0.5em}日\hspace{0.5em}记}
+    \ruleline{31.5mm}{179mm}{26.5mm}
+    \ruleline{32mm}{177mm}{273mm}
+    \basewest{158mm}{280mm}{\diaryPageFont 第\hspace{0.45em}#1\hspace{0.45em}页}
+  }%
+}
+
+\begin{document}
+
+\pagecanvas{%
+  \northwest{60mm}{45mm}{\includegraphics[width=90mm]{assets/tongji-diary-logo.png}}
+  \basecenter{105mm}{99mm}{\diaryShu\fontsize{56pt}{45pt}\selectfont 实习日记本}
+  \basewest{42mm}{143mm}{\diaryFormFont 学\hspace{2.1em}院}
+  \ruleline{78mm}{176mm}{147mm}
+  \basewest{42mm}{158mm}{\diaryFormFont 专\hspace{2.1em}业}
+  \ruleline{78mm}{176mm}{162mm}
+  \basewest{42mm}{173mm}{\diaryFormFont 学\hspace{2.1em}号}
+  \ruleline{78mm}{176mm}{177mm}
+  \basewest{42mm}{188mm}{\diaryFormFont 学生姓名}
+  \ruleline{78mm}{176mm}{192mm}
+  \basewest{42mm}{203mm}{\diaryFormFont 接受单位}
+  \ruleline{78mm}{176mm}{207mm}
+  \basewest{42mm}{218mm}{\diaryFormFont 地\hspace{2.1em}址}
+  \ruleline{78mm}{176mm}{222mm}
+  \basewest{35mm}{233mm}{\diaryFormFont 指导教师姓名}
+  \ruleline{78mm}{176mm}{237mm}
+}
+
+\newpage
+\pagecanvas{%
+  \basecenter{105mm}{42mm}{\diaryHei\fontsize{22pt}{22pt}\selectfont 大学生校外实习守则}
+  \northcenter{105mm}{62mm}{%
+    \begin{minipage}{155mm}
+      \diaryBodyFont
+      \setlength{\parindent}{2em}
+      \setlength{\parskip}{0pt}
+      \par{}
+      一、高校校外实习是高等教育同社会主义建设相结合的重要环节，是培养合格人才的重要保证，每个学生必须按照教学计划的要求，认真参加各种形式的校外实习活动，并自觉遵守本守则。
+      \par{}
+      二、严格遵守实习单位的有关规章制度。如有违反，学校应会同实习单位按有关规定严肃处理。
+      \par{}
+      三、自觉遵守劳动纪律、尊重实习带教人员，服从安排，严格执行安全操作规程。
+      \par{}
+      四、妥善保管实习需要而借阅的图纸、资料，严格遵守保密制度，防止泄密。
+      \par{}
+      五、认真写好实习日记，客观记录实习的内容、问题及心得。
+      \par{}
+      六、独立完成实习报告，系统总结、综合分析实习中的问题以及解决问题的方法和建议。
+      \par{}
+      七、实习结束时，必须如数归还所借用的劳防用品、工具、仪器、资料及生活用品，如有损坏或遗失应按规定赔偿。
+      \par{}
+      八、学生在实习期间造成伤残和死亡的，可按“大学生团体平安保险”有关规定给予赔偿。
+    \end{minipage}
+  }
+}
+
+\newpage
+\pagecanvas{%
+  \draw[line width=0.45pt]
+  ([xshift=29mm, yshift=-31mm]current page.north west)
+  rectangle
+  ([xshift=180mm, yshift=-249mm]current page.north west);
+  \ruleline{29mm}{180mm}{44mm}
+  \ruleline{29mm}{180mm}{57mm}
+  \ruleline{29mm}{180mm}{70mm}
+  \ruleline{29mm}{180mm}{197mm}
+  \basecenter{105mm}{40mm}{\diaryTableFont 实习起迄日期}
+  \basewest{32mm}{53mm}{\diaryTableFont 自2026年7月6日起至2026年7月16日止。}
+  \basecenter{105mm}{66mm}{\diaryTableFont 实\hspace{0.5em}习\hspace{0.5em}内\hspace{0.5em}容}
+  \basewest{31mm}{203mm}{\diaryTableFont 指导教师批阅意见：}
+  \basewest{71mm}{246mm}{\diaryTableFont 指导教师签名}
+  \basewest{151mm}{246mm}{\diaryTableFont 月\hspace{1.5em}日}
+}
+
+\newpage
+\pagecanvas{}
+
+\newpage
+\journalpage{1}
+
+\newpage
+\journalpage{2}
+
+\newpage
+\journalpage{3}
+
+\newpage
+\journalpage{4}
+
+\end{document}
