@@ -26,39 +26,47 @@
   \end{tikzpicture}%
   \null
 }
-
 \newcommand{\basewest}[3]{%
   \node[anchor=base west, inner sep=0pt] at
     ([xshift=#1, yshift=-#2]current page.north west) {#3};%
 }
-
 \newcommand{\basecenter}[3]{%
   \node[anchor=base, inner sep=0pt] at
     ([xshift=#1, yshift=-#2]current page.north west) {#3};%
 }
-
 \newcommand{\northwest}[3]{%
   \node[anchor=north west, inner sep=0pt] at
     ([xshift=#1, yshift=-#2]current page.north west) {#3};%
 }
-
 \newcommand{\northcenter}[3]{%
   \node[anchor=north, inner sep=0pt] at
     ([xshift=#1, yshift=-#2]current page.north west) {#3};%
 }
-
 \newcommand{\ruleline}[3]{%
   \draw[line width=0.45pt]
     ([xshift=#1, yshift=-#3]current page.north west) --
     ([xshift=#2, yshift=-#3]current page.north west);%
 }
-
 \newcommand{\diaryFormFont}{\diaryFang\fontsize{18pt}{20pt}\selectfont}
 \newcommand{\diaryBodyFont}{\diarySong\fontsize{14pt}{19pt}\selectfont}
 \newcommand{\diaryTableFont}{\diaryFang\fontsize{15pt}{17pt}\selectfont}
 \newcommand{\diaryPageFont}{\diarySong\fontsize{16pt}{18pt}\selectfont}
 \newcommand{\fixedline}[1]{\noindent\makebox[0pt][l]{#1}\\}
-
+\newcommand{\diaryDateRuleSegments}{%
+  \draw[line width=0.45pt, line cap=butt]
+    ([xshift=37.0mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=50.0mm, yshift=-54.35mm]current page.north west)
+    ([xshift=55.8mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=65.1mm, yshift=-54.35mm]current page.north west)
+    ([xshift=69.8mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=80.7mm, yshift=-54.35mm]current page.north west)
+    ([xshift=96.1mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=106.8mm, yshift=-54.35mm]current page.north west)
+    ([xshift=112.6mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=121.8mm, yshift=-54.35mm]current page.north west)
+    ([xshift=126.6mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=137.5mm, yshift=-54.35mm]current page.north west);%
+}
 \newcommand{\journalpage}[1]{%
   \pagecanvas{%
     \basewest{147mm}{20mm}{\diaryPageFont 实\hspace{0.5em}习\hspace{0.5em}日\hspace{0.5em}记}
@@ -75,18 +83,25 @@
   \basecenter{105mm}{99mm}{\diaryShu\fontsize{56pt}{45pt}\selectfont 实习日记本}
   \basewest{42mm}{143mm}{\diaryFormFont 学\hspace{2.1em}院}
   \ruleline{78mm}{176mm}{147mm}
+  \basecenter{127mm}{143mm}{\diaryFormFont 交通学院}
   \basewest{42mm}{158mm}{\diaryFormFont 专\hspace{2.1em}业}
   \ruleline{78mm}{176mm}{162mm}
+  \basecenter{127mm}{158mm}{\diaryFormFont 车辆工程}
   \basewest{42mm}{173mm}{\diaryFormFont 学\hspace{2.1em}号}
   \ruleline{78mm}{176mm}{177mm}
+  \basecenter{127mm}{173mm}{\diaryFormFont 2352670}
   \basewest{42mm}{188mm}{\diaryFormFont 学生姓名}
   \ruleline{78mm}{176mm}{192mm}
+  \basecenter{127mm}{188mm}{\diaryFormFont 肖哲夫}
   \basewest{42mm}{203mm}{\diaryFormFont 接受单位}
   \ruleline{78mm}{176mm}{207mm}
+  \basecenter{127mm}{203mm}{\diaryFormFont 中车南京浦镇车辆有限公司}
   \basewest{42mm}{218mm}{\diaryFormFont 地\hspace{2.1em}址}
   \ruleline{78mm}{176mm}{222mm}
+  \basecenter{127mm}{218mm}{\diaryFormFont 南京市江北新区浦珠北路68号}
   \basewest{35mm}{233mm}{\diaryFormFont 指导教师姓名}
   \ruleline{78mm}{176mm}{237mm}
+  \basecenter{127mm}{233mm}{\diaryFormFont 周凯}
 }
 
 \newpage
@@ -128,7 +143,20 @@
   \ruleline{29mm}{180mm}{70mm}
   \ruleline{29mm}{180mm}{197mm}
   \basecenter{105mm}{40mm}{\diaryTableFont 实习起迄日期}
-  \basewest{32mm}{53mm}{\diaryTableFont 自2026年7月6日起至2026年7月16日止。}
+  \basewest{32mm}{53mm}{\diaryTableFont 自}
+  \basewest{50.2mm}{53mm}{\diaryTableFont 年}
+  \basewest{65.1mm}{53mm}{\diaryTableFont 月}
+  \basewest{80mm}{53mm}{\diaryTableFont 日起至}
+  \basewest{107mm}{53mm}{\diaryTableFont 年}
+  \basewest{121.9mm}{53mm}{\diaryTableFont 月}
+  \basewest{136.8mm}{53mm}{\diaryTableFont 日止}
+  \basecenter{43.5mm}{53mm}{\diaryTableFont 2026}
+  \basecenter{60.45mm}{53mm}{\diaryTableFont 7}
+  \basecenter{75.25mm}{53mm}{\diaryTableFont 6}
+  \basecenter{101.45mm}{53mm}{\diaryTableFont 2026}
+  \basecenter{117.2mm}{53mm}{\diaryTableFont 7}
+  \basecenter{132.05mm}{53mm}{\diaryTableFont 10}
+  \diaryDateRuleSegments
   \basecenter{105mm}{66mm}{\diaryTableFont 实\hspace{0.5em}习\hspace{0.5em}内\hspace{0.5em}容}
   \basewest{31mm}{203mm}{\diaryTableFont 指导教师批阅意见：}
   \basewest{71mm}{246mm}{\diaryTableFont 指导教师签名}
