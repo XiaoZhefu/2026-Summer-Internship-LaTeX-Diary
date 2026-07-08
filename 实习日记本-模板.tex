@@ -49,8 +49,14 @@
 }
 \newcommand{\diaryFormFont}{\diaryFang\fontsize{18pt}{20pt}\selectfont}
 \newcommand{\diaryBodyFont}{\diarySong\fontsize{14pt}{19pt}\selectfont}
+\newcommand{\diaryJournalBodyFont}{\diarySong\fontsize{12pt}{15pt}\selectfont}
 \newcommand{\diaryTableFont}{\diaryFang\fontsize{15pt}{17pt}\selectfont}
 \newcommand{\diaryPageFont}{\diarySong\fontsize{16pt}{18pt}\selectfont}
+\ctexset{
+  section = {format = {\centering\diaryHei\bfseries\Large}},
+  subsection = {format = {\diaryHei\bfseries\large}},
+  subsubsection = {format = {\diaryHei\bfseries\normalsize}}
+}
 \newcommand{\fixedline}[1]{\noindent\makebox[0pt][l]{#1}\\}
 \newcommand{\diaryDateRuleSegments}{%
   \draw[line width=0.45pt, line cap=butt]
@@ -60,19 +66,22 @@
     ([xshift=65.1mm, yshift=-54.35mm]current page.north west)
     ([xshift=69.8mm, yshift=-54.35mm]current page.north west) --
     ([xshift=80.7mm, yshift=-54.35mm]current page.north west)
-    ([xshift=96.1mm, yshift=-54.35mm]current page.north west) --
-    ([xshift=106.8mm, yshift=-54.35mm]current page.north west)
+    ([xshift=95.0mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=108.0mm, yshift=-54.35mm]current page.north west)
     ([xshift=112.6mm, yshift=-54.35mm]current page.north west) --
     ([xshift=121.8mm, yshift=-54.35mm]current page.north west)
     ([xshift=126.6mm, yshift=-54.35mm]current page.north west) --
     ([xshift=137.5mm, yshift=-54.35mm]current page.north west);%
 }
-\newcommand{\journalpage}[1]{%
+\newcounter{journalpagecounter}
+\setcounter{journalpagecounter}{0}
+\newcommand{\journalpage}{%
+  \stepcounter{journalpagecounter}%
   \pagecanvas{%
-    \basewest{147mm}{20mm}{\diaryPageFont 实\hspace{0.5em}习\hspace{0.5em}日\hspace{0.5em}记}
+    \basewest{147mm}{20mm}{\diaryPageFont 实\hspace{0.25em}习\hspace{0.25em}日\hspace{0.25em}记}
     \ruleline{31.5mm}{179mm}{26.5mm}
     \ruleline{32mm}{177mm}{273mm}
-    \basewest{158mm}{280mm}{\diaryPageFont 第\hspace{0.45em}#1\hspace{0.45em}页}
+    \basewest{158mm}{280mm}{\diaryPageFont 第\hspace{0.4em}\thejournalpagecounter\hspace{0.4em}页}
   }%
 }
 
@@ -113,20 +122,13 @@
       \setlength{\parindent}{2em}
       \setlength{\parskip}{0pt}
       \par{}
-      一、高校校外实习是高等教育同社会主义建设相结合的重要环节，是培养合格人才的重要保证，每个学生必须按照教学计划的要求，认真参加各种形式的校外实习活动，并自觉遵守本守则。
-      \par{}
-      二、严格遵守实习单位的有关规章制度。如有违反，学校应会同实习单位按有关规定严肃处理。
-      \par{}
-      三、自觉遵守劳动纪律、尊重实习带教人员，服从安排，严格执行安全操作规程。
-      \par{}
-      四、妥善保管实习需要而借阅的图纸、资料，严格遵守保密制度，防止泄密。
-      \par{}
-      五、认真写好实习日记，客观记录实习的内容、问题及心得。
-      \par{}
-      六、独立完成实习报告，系统总结、综合分析实习中的问题以及解决问题的方法和建议。
-      \par{}
-      七、实习结束时，必须如数归还所借用的劳防用品、工具、仪器、资料及生活用品，如有损坏或遗失应按规定赔偿。
-      \par{}
+      一、高校校外实习是高等教育同社会主义建设相结合的重要环节，是培养合格人才的重要保证，每个学生必须按照教学计划的要求，认真参加各种形式的校外实习活动，并自觉遵守本守则。\par{}
+      二、严格遵守实习单位的有关规章制度。如有违反，学校应会同实习单位按有关规定严肃处理。\par{}
+      三、自觉遵守劳动纪律、尊重实习带教人员，服从安排，严格执行安全操作规程。\par{}
+      四、妥善保管实习需要而借阅的图纸、资料，严格遵守保密制度，防止泄密。\par{}
+      五、认真写好实习日记，客观记录实习的内容、问题及心得。\par{}
+      六、独立完成实习报告，系统总结、综合分析实习中的问题以及解决问题的方法和建议。\par{}
+      七、实习结束时，必须如数归还所借用的劳防用品、工具、仪器、资料及生活用品，如有损坏或遗失应按规定赔偿。\par{}
       八、学生在实习期间造成伤残和死亡的，可按“大学生团体平安保险”有关规定给予赔偿。
     \end{minipage}
   }
@@ -167,15 +169,68 @@
 \pagecanvas{}
 
 \newpage
-\journalpage{1}
+\journalpage
+\vspace{-0.75cm}
+\section*{7月6日\quad{}星期一}
+\diaryJournalBodyFont\vspace{-0.3cm}\par{}
+第一天我们来到浦镇厂报告厅听讲座，主要是介绍创新与研发体系、城轨车体制造工艺技术、转向架工业设计流程与相关智能产线、城轨车辆总装工艺技术等；其中还穿插了安全教育，提醒大家在厂区内必须带上安全帽、不要玩手机、不要在重物下停留、不能拍照等。\par{}
+下文主要摘录讲座上记录的主要内容：\par{}
+\vspace{-0.5cm}\subsection*{一、 创新与研发体系介绍}
+\vspace{-0.2cm}\subsubsection*{1.1\quad{}基本概况}\vspace{-0.2cm}
+{\bf{}组织架构：}技术中心下设7部门，分别是科技管理部、总体研发部、转向架研发部、结构研发部、电器研发部和试验中心等。\par{}
+{\bf{}主要职能：}新造、加改、科研、支持。\par{}
+{\bf{}部门职责：}科技管理部总管各研发部，总体研发部牵头整车项目设计等。\par{}
+{\bf{}研发能力：}包括车体、转向架、TCMS等关键系统与产品的研发，网络软件的研发，静强度、碰撞、动应力、模态等的多学科仿真设计，系统工程设计，工业设计，基础研究及试验等能力，涵盖车辆设计生产制造全流程的研发任务。\par{}
+\textcolor{gray}{{\bf{}tips: }这一部分中有相当一些知识是学过的，如仿真设计涉及轨道车辆设计课程中的有限元分析等知识，系统工程设计中包含了RAMS、LCC等可靠性核心概念，这些都是本学期必修或选修课的相关内容，学了之后就不再陌生了。}\par{}
+\vspace{-0.5cm}\subsubsection*{1.2\quad{}技术创新成果}\vspace{-0.2cm}
+{\bf{}产品平台：}动车组，如系列化动集（CR200J-A/B/C/D）、动分（CR300AF、CRH2G、CRH6）；客车，除常规客车外还有轨检车、隧检车、电检车、多功能后期保障车等；城轨车辆，包括系列化地铁、市域铁路、重地运量列车，以及各类工程车产品。\par{}
+{\bf{}专项技术：}包含车体轻量化、新材料、先进制造技术、服役寿命的研究，多种干线铁路客车、城轨车辆、城际市域车辆、胶轮车辆转向架的研发，一体化智慧列车运行系统TCSI、多系统/多网多屏融合技术、无线通信技术的专利等等。\par{}
+{\bf{}研发体系：}通过数字化手段赋能研发设计业务，建立数据贯通、业务协同、管理规范的研发体系；对设计文件、表单、联系书等进行统型与规范化，指定文档模板等等。\par{}
+{\bf{}专利获奖（略）}\par{}
+\textcolor{gray}{{\bf{}tips: }同样有某些内容上课学过，如车体轻量化就可以通过采用中空铝型材等新材料，以及先进设计制造方法等方式进行。}\par{}
+\newpage
+\journalpage
+\vspace{-0.75cm}\subsubsection*{1.3\quad{}研发未来展望}\vspace{-0.2cm}
+新制式车辆平台建设（新产品）、新型轻量化材料应用（新材料）、新型设计方法应用（新方法）、新型电气架构（新架构）；设计能力提升与关键技术/系统应用，如模块化自主化设计、TCSI系统在中低运量列车上的运用、灵活编组技术的应用等；AI技术应用与智能运维赋能提升等。\par{}
+\vspace{-0.5cm}\subsection*{二、 城轨车辆车体制造工艺技术概述}
+\vspace{-0.2cm}\subsubsection*{2.1\quad{}车体结构简述}\vspace{-0.2cm}
+111
+\vspace{-0.5cm}\subsubsection*{2.2\quad{}车体制造工艺流程}\vspace{-0.2cm}
+111
+\vspace{-0.5cm}\subsubsection*{2.3\quad{}车体制造工艺方法}\vspace{-0.2cm}
+111
+\vspace{-0.5cm}\subsubsection*{2.4\quad{}数智制造工艺}\vspace{-0.2cm}
+111
+
+
+
+
+
+
+
 
 \newpage
-\journalpage{2}
+\journalpage
+\vspace{-0.75cm}
+\section*{7月7日\quad{}星期二}
+\diaryJournalBodyFont\vspace{-0.3cm}\par{}
 
 \newpage
-\journalpage{3}
+\journalpage
+\vspace{-0.75cm}
+\section*{7月8日\quad{}星期三}
+\diaryJournalBodyFont\vspace{-0.3cm}\par{}
 
 \newpage
-\journalpage{4}
+\journalpage
+\vspace{-0.75cm}
+\section*{7月9日\quad{}星期四}
+\diaryJournalBodyFont\vspace{-0.3cm}\par{}
+
+\newpage
+\journalpage
+\vspace{-0.75cm}
+\section*{7月10日\quad{}星期五}
+\diaryJournalBodyFont\vspace{-0.3cm}\par{}
 
 \end{document}
