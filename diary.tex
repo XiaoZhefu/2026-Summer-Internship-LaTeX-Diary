@@ -1,95 +1,11 @@
 \documentclass[12pt, oneside, a4paper]{ctexart}
-
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{caption}
-\usepackage{float}
-\usepackage[{top=25.4mm, bottom=25.4mm, left=31.8mm, right=31.8mm}]{geometry}
-\usepackage{graphicx}
-\usepackage[breaklinks, colorlinks=false, hidelinks]{hyperref}
-\usepackage{mathptmx}
-\usepackage{xcolor}
-\usepackage{xeCJK}
-\usepackage{tikz}
-
-\pagestyle{empty}
-\setmainfont{Times New Roman}
-\setCJKmainfont[AutoFakeBold={2}]{SimSun}
-\setCJKfamilyfont{zh}{SimSun}
-\newCJKfontfamily\diarySong{SimSun}
-\newCJKfontfamily\diaryHei{SimHei}
-\newCJKfontfamily\diaryFang{FangSong}
-\newCJKfontfamily\diaryShu{FZShuTi}
-
-\newcommand{\pagecanvas}[1]{%
-  \thispagestyle{empty}%
-  \begin{tikzpicture}[remember picture, overlay]
-    #1
-  \end{tikzpicture}%
-  \null
-}
-\newcommand{\basewest}[3]{%
-  \node[anchor=base west, inner sep=0pt] at
-    ([xshift=#1, yshift=-#2]current page.north west) {#3};%
-}
-\newcommand{\basecenter}[3]{%
-  \node[anchor=base, inner sep=0pt] at
-    ([xshift=#1, yshift=-#2]current page.north west) {#3};%
-}
-\newcommand{\northwest}[3]{%
-  \node[anchor=north west, inner sep=0pt] at
-    ([xshift=#1, yshift=-#2]current page.north west) {#3};%
-}
-\newcommand{\northcenter}[3]{%
-  \node[anchor=north, inner sep=0pt] at
-    ([xshift=#1, yshift=-#2]current page.north west) {#3};%
-}
-\newcommand{\ruleline}[3]{%
-  \draw[line width=0.45pt]
-    ([xshift=#1, yshift=-#3]current page.north west) --
-    ([xshift=#2, yshift=-#3]current page.north west);%
-}
-\newcommand{\diaryFormFont}{\diaryFang\fontsize{18pt}{20pt}\selectfont}
-\newcommand{\diaryBodyFont}{\diarySong\fontsize{14pt}{19pt}\selectfont}
-\newcommand{\diaryJournalBodyFont}{\diarySong\fontsize{12pt}{15pt}\selectfont}
-\newcommand{\diaryTableFont}{\diaryFang\fontsize{15pt}{17pt}\selectfont}
-\newcommand{\diaryPageFont}{\diarySong\fontsize{16pt}{18pt}\selectfont}
-\ctexset{
-  section = {format = {\centering\diaryHei\bfseries\Large}},
-  subsection = {format = {\diaryHei\bfseries\large}},
-  subsubsection = {format = {\diaryHei\bfseries\normalsize}}
-}
-\newcommand{\fixedline}[1]{\noindent\makebox[0pt][l]{#1}\\}
-\newcommand{\diaryDateRuleSegments}{%
-  \draw[line width=0.45pt, line cap=butt]
-    ([xshift=37.0mm, yshift=-54.35mm]current page.north west) --
-    ([xshift=50.0mm, yshift=-54.35mm]current page.north west)
-    ([xshift=55.8mm, yshift=-54.35mm]current page.north west) --
-    ([xshift=65.1mm, yshift=-54.35mm]current page.north west)
-    ([xshift=69.8mm, yshift=-54.35mm]current page.north west) --
-    ([xshift=80.7mm, yshift=-54.35mm]current page.north west)
-    ([xshift=95.0mm, yshift=-54.35mm]current page.north west) --
-    ([xshift=108.0mm, yshift=-54.35mm]current page.north west)
-    ([xshift=112.6mm, yshift=-54.35mm]current page.north west) --
-    ([xshift=121.8mm, yshift=-54.35mm]current page.north west)
-    ([xshift=126.6mm, yshift=-54.35mm]current page.north west) --
-    ([xshift=137.5mm, yshift=-54.35mm]current page.north west);%
-}
-\newcounter{journalpagecounter}
-\setcounter{journalpagecounter}{0}
-\newcommand{\journalpage}{%
-  \stepcounter{journalpagecounter}%
-  \pagecanvas{%
-    \basewest{147mm}{20mm}{\diaryPageFont 实\hspace{0.25em}习\hspace{0.25em}日\hspace{0.25em}记}
-    \ruleline{31.5mm}{179mm}{26.5mm}
-    \ruleline{32mm}{177mm}{273mm}
-    \basewest{158mm}{280mm}{\diaryPageFont 第\hspace{0.4em}\thejournalpagecounter\hspace{0.4em}页}
-  }%
-}
+\input{diary-header}
+% chktex-file 1
+% chktex-file 8
 
 \begin{document}
 
-\pagecanvas{%
+\pagecanvas{
   \northwest{60mm}{45mm}{\includegraphics[width=90mm]{assets/tongji-diary-logo.png}}
   \basecenter{105mm}{99mm}{\diaryShu\fontsize{56pt}{45pt}\selectfont 实习日记本}
   \basewest{42mm}{143mm}{\diaryFormFont 学\hspace{2.1em}院}
@@ -119,9 +35,9 @@
 \pagecanvas{}
 
 \newpage
-\pagecanvas{%
+\pagecanvas{
   \basecenter{105mm}{42mm}{\diaryHei\fontsize{22pt}{22pt}\selectfont 大学生校外实习守则}
-  \northcenter{105mm}{62mm}{%
+  \northcenter{105mm}{62mm}{
     \begin{minipage}{155mm}
       \diaryBodyFont
       \setlength{\parindent}{2em}
@@ -143,7 +59,7 @@
 \pagecanvas{}
 
 \newpage
-\pagecanvas{%
+\pagecanvas{
   \draw[line width=0.45pt]
   ([xshift=29mm, yshift=-31mm]current page.north west)
   rectangle
@@ -294,7 +210,7 @@
 \begin{figure}[H]
   \centering
   \vspace{-6mm}
-  \includegraphics[width=0.25\textwidth, trim=2pt 2pt 2pt 2pt, clip]{assets/U.pdf}
+  \includegraphics[width=0.25\textwidth, trim=2pt 2pt 2pt 2pt, clip]{assets/U_untagged.pdf}
   \vspace{-8mm}
   \caption*{\small{}图6\quad{}U形生产线示意图}
   \vspace{-5mm}
@@ -324,11 +240,11 @@
 \diaryJournalBodyFont\vspace{-3mm}\par{}
 第三天我们首先接着参观了转向架分厂的构架制造部分，然后是车体分厂，最后在总装厂房的培训室进行了实习培训。\par{}
 \vspace{-5mm}\subsection*{一、 转向架分厂参观（构架焊接）}\vspace{-2mm}
-首先去了转向架分厂，从昨天的学习我们知道转向架除了整体装配和轮对制造，还要进行构架焊接，因此今早主要是参观构架焊接产线，下面是该产线的布局图（其中下图来源于网络\textsuperscript{\color{red}\cite{ref1}}，仅大致描绘，可能有部分错误）。\par{}
+首先去了转向架分厂，从昨天的学习我们知道转向架除了整体装配和轮对制造，还要进行构架焊接，因此今早主要是参观构架焊接产线，下面是该产线的布局图（其中下图来源于网络\sourcecite{1}，仅大致描绘，可能有部分错误）。\par{}
 \begin{figure}[H]
   \centering
   \vspace{-6mm}
-  \includegraphics[width=0.98\textwidth, trim=2pt 2pt 2pt 2pt, clip]{assets/GOUJIA.pdf}
+  \includegraphics[width=0.98\textwidth, trim=2pt 2pt 2pt 2pt, clip]{assets/GOUJIA_untagged.pdf}
   \includegraphics[width=0.96\textwidth]{assets/20260710_120305.jpg}
   \vspace{-2.5mm}
   \caption*{\small{}图7\quad{}构架焊接智能产线示意图}
@@ -369,7 +285,7 @@
 \begin{figure}[H]
   \centering
   \vspace{-6mm}
-  \includegraphics[width=0.8\textwidth, trim=2pt 2pt 2pt 2pt, clip]{assets/MAP.pdf}
+  \includegraphics[width=0.8\textwidth, trim=2pt 2pt 2pt 2pt, clip]{assets/MAP_untagged.pdf}
   \vspace{-5mm}
   \caption*{\small{}图9\quad{}总装厂房位置布局（简化）}
   \vspace{-5mm}
@@ -394,7 +310,7 @@
 \begin{figure}[H]
   \centering
   \vspace{-6mm}
-  \includegraphics[width=0.98\textwidth, trim=2pt 2pt 2pt 2pt, clip]{assets/M.pdf}
+  \includegraphics[width=0.98\textwidth, trim=2pt 2pt 2pt 2pt, clip]{assets/M_untagged.pdf}
   \vspace{-5mm}
   \caption*{\small{}图10\quad{}上海地铁21号线M车车下设备布局图}
   \vspace{-5mm}
@@ -436,7 +352,7 @@
 \section*{7月10日\quad{}星期五}
 \diaryJournalBodyFont\vspace{-3mm}\par{}
 今天上午继续在总装分厂进行观摩学习。\par{}
-早上7 : 50，我们和工人们一起开了晨会，我所在的工作组简单交代了一下任务就开始干活了。我还是回到了我昨天待的工位上，结果发现好像昨天那节已经涂装好的车厢已经迁移到旁边的轨道上了，而人是跟着任务走的，所以今天我所在的工位好像有人员变化。\par{}
+早上7:50，我们和工人们一起开了晨会，我所在的工作组简单交代了一下任务就开始干活了。我还是回到了我昨天待的工位上，结果发现好像昨天那节已经涂装好的车厢已经迁移到旁边的轨道上了，而人是跟着任务走的，所以今天我所在的工位好像有人员变化。\par{}
 今天主要就是四处转转，除了上海地铁21号线列车，在厂房内的列车还有杭州地铁、穗莞深城际，以及出口至沙特阿拉伯的跨座式单轨、出口至格鲁吉亚第比利斯的地铁列车等，有点小差异，各有各的美。\par{}
 印象最深的就是穗莞深城际列车，整体远看像国铁的动车组，近看像大地铁，车身是银白色的，有类似于和谐号的横条纹，只不过条纹是紫色；每节车厢有前中后三个车门，和地铁的五个车门、一般国铁客车或动车组车厢的两个车门都不一样；此外车下的电气设备也使用外壳进行了包裹，而地铁列车是没有的，非常整齐美观。\textcolor{gray}{{\bf{}tips: }我过几年高低得坐一坐这条线……}\par{}
 而沙特单轨车的头车停在角落里，是纯白色，车窗上沿有可变色的灯带，主打一个简约。路过的时候正好在调试灯光，前面车灯全部打开了，驾驶室上方的LED横幅也在滚动显示信息，有英语和阿拉伯语两种显示（滚动方向是反的），回想前几天不知在哪个环节听到的描述，推断这就是出口至沙特的单轨。\par{}
@@ -451,7 +367,7 @@
 \vspace{-7.5mm}
 \section*{7月13日\quad{}星期一}
 \diaryJournalBodyFont\vspace{-3mm}\par{}
-今天我们来到了位于上海市嘉定区安亭镇伊宁路2620号的申通中车轨道交通车辆有限公司，也就是上海赛车场车辆段，下图为其在配线图中的位置\textsuperscript{\color{red}\cite{ref2}}与其外景；其从上海赛车场花桥方向的交叉渡线两端引出轨道并抬升至地面，可直接通向车辆段车库（棕色方块处），或经折返后进入综合维修中心（红框处）。我们今天参观的就是红框处的维修中心。\par{}
+今天我们来到了位于上海市嘉定区安亭镇伊宁路2620号的申通中车轨道交通车辆有限公司，也就是上海赛车场车辆段，下图为其在配线图中的位置\sourcecite{2}与其外景；其从上海赛车场花桥方向的交叉渡线两端引出轨道并抬升至地面，可直接通向车辆段车库（棕色方块处），或经折返后进入综合维修中心（红框处）。我们今天参观的就是红框处的维修中心。\par{}
 \begin{figure}[H]
   \centering
   \vspace{-1.5mm}
@@ -513,7 +429,7 @@
 \vspace{-7.5mm}
 \section*{7月14日\quad{}星期二}
 \diaryJournalBodyFont\vspace{-3mm}\par{}
-今天我们去了梅陇基地，该基地位于上海南站附近，一侧是一号线地上段（上海南站至锦江乐园区间），另一侧是金山铁路。这附近是上海地铁一号线的起点，因此可在图18\textsuperscript{\color{red}\cite{ref2}}所示的配线图上看见其里程为“S0+000=0+000”，表示上下行均以此作为起点；此外，类似于赛车场车辆段，梅陇基地也有一个车库加一个维修厂，同时还有与金山铁路相连的国铁联络线。\par{}
+今天我们去了梅陇基地，该基地位于上海南站附近，一侧是一号线地上段（上海南站至锦江乐园区间），另一侧是金山铁路。这附近是上海地铁一号线的起点，因此可在图18\sourcecite{2}所示的配线图上看见其里程为“S0+000=0+000”，表示上下行均以此作为起点；此外，类似于赛车场车辆段，梅陇基地也有一个车库加一个维修厂，同时还有与金山铁路相连的国铁联络线。\par{}
 \begin{figure}[H]
   \centering
   \vspace{-2.5mm}
@@ -558,8 +474,36 @@
 \vspace{-7.5mm}
 \section*{7月15日\quad{}星期三}
 \diaryJournalBodyFont\vspace{-3mm}\par{}
-今天我们去了位于闵行开发区的上海阿尔斯通（中车长客）公司，位置大致如图19\textsuperscript{\color{red}\cite{ref2}}，在闵行开发区站西侧。\par{}
+今天我们去了位于闵行开发区的上海阿尔斯通（中车长客）公司，位置大致如图19\sourcecite{2}，在闵行开发区站西侧。\par{}
+\begin{figure}[H]
+  \centering
+  \vspace{-2.5mm}
+  \includegraphics[width=0.6\textwidth]{assets/day8.png}
+  \vspace{-2.5mm}
+  \caption*{\small{}图19\quad{}上海阿尔斯通（中车长客）公司位置}
+  \vspace{-5mm}
+\end{figure}
+由于今天天气较热，所有项目均为室内讲座，下面是对讲座内容的记录。\par{}
+\vspace{-5mm}\subsection*{一、 公司介绍}\vspace{-2mm}
+该公司全称上海轨道交通设备发展有限公司，由中车长客、上海电气等共同持股，融合阿尔斯通等品牌、资源、技术优势，下属上海中车长客交通设备有限公司（原SATCO）、上海阿尔斯通交通电气有限公司（SATEE）、工程公司等子公司、联营公司或独立分公司。\par{}
+原SATCO具有从车辆设计，到组装、涂装、总装、调试、质保、维修的一系列完整产业链，参与了多种上海地铁车型的设计；而SATEE则负责生产牵引系统设备、辅助变流器及其相关电气设备，是国内具有投标资质的定点生产牵引传动与控制系统的企业，先前在浦镇公司看到的上海21号线列车的车下电气设备就是该公司的产品；而工程公司则负责设计制造安装屏蔽门、安全门等产品，还具备供电、车站、车辆段等设备集成与施工安装的能力等。\par{}
+\vspace{-5mm}\subsection*{二、 上海工程技术研究中心介绍}\vspace{-2mm}
+该中心的功能定位为：补齐公司技术短板、引领特色技术领域、支撑区域化经营、输出技术及服务。其下属4个部门，分别为综合管理部、核心技术研发部、系统集成研发部、城铁车辆研发部。其主要车辆产品有地铁车辆、市域车、有轨电车、车辆设备等，参与了上海某些地铁线路的车辆设计、金华-义乌-东阳市域车设计、嘉兴有轨电车设计等设计任务，也在上海地铁完成了多种车辆的升级改造任务，同时还有一些售后等服务。\par{}
+\vspace{-5mm}\subsection*{三、 新线路及其车辆设计概述}\vspace{-2mm}
+将来，除了机场联络线，上海还会有3条市域线：南汇线、青浦示范区线、嘉闵线。车辆均采用市域C型车，注意市域车的规格同地铁有所区别，市域A\par{}
 
+\newpage
+\journalpage\par\noindent
+型车尺寸大致等于地铁A型车，B型车也类似，但是C型车是基于高铁动车组，如“复兴号”，进行降速降配、城铁化而来，可以4节编组、8节编组或4+4重联编组运行（两车连挂需要同步信号等设备才算重联，否则可能是救援）。\par{}
+接着还讲了规划或建设中的上海“新五线”，即19\textasciitilde{}23号线的地铁列车设计方案，包括造型、配色等。这五条线都是无人驾驶车辆，但是仍然配有司机和司机室，只不过司机室没有占满整个车头宽度，车头处空余部分还留出了朝前开的逃生门。至于为什么还要配备司机，这是因为机破时仍然需要专业人员进行排障、指引乘客等操作。\par{}
+今日的学习就到这里，明天去上海动车段，也是最后一天，加油！\par{}
+
+\newpage
+\journalpage
+\vspace{-7.5mm}
+\section*{7月16日\quad{}星期四}
+\diaryJournalBodyFont\vspace{-3mm}\par{}
+今天我们去了上海动车段
 
 \newpage
 \begin{flushleft}

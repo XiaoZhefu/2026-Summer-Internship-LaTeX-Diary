@@ -1,0 +1,93 @@
+% Shared preamble and layout helpers for 实习日记本-模板.tex.
+% This file is loaded immediately after \documentclass.
+% chktex-file 1
+% chktex-file 8
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{float}
+\usepackage[{top=25.4mm, bottom=25.4mm, left=31.8mm, right=31.8mm}]{geometry}
+\usepackage{graphicx}
+\usepackage[breaklinks, colorlinks=false, hidelinks, bookmarks=false, pdfpagelabels=false]{hyperref}
+\usepackage{newtxtext,newtxmath}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{tikz}
+
+\pagestyle{empty}
+\AtBeginDocument{
+  \setCJKfamilyfont{zh}[Path=C:/Windows/Fonts/,Extension=.ttc,FontIndex=0,AutoFakeBold={2}]{simsun}
+  \renewcommand{\CJKrmdefault}{zh}
+  \renewcommand{\CJKfamilydefault}{zh}
+  \newCJKfontfamily\diarySong[Path=C:/Windows/Fonts/,Extension=.ttc,FontIndex=0]{simsun}
+  \newCJKfontfamily\diaryHei[Path=C:/Windows/Fonts/,Extension=.ttf,AutoFakeBold={2}]{simhei}
+  \newCJKfontfamily\diaryFang[Path=C:/Windows/Fonts/,Extension=.ttf]{simfang}
+  \newCJKfontfamily\diaryShu[Path=C:/Windows/Fonts/,Extension=.TTF]{FZSTK}
+}
+\newcommand{\sourcecite}[1]{\textsuperscript{\color{red}[#1]}}
+\newcommand{\pagecanvas}[1]{
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture, overlay]
+    #1
+  \end{tikzpicture}
+  \null{}
+}
+\newcommand{\basewest}[3]{
+  \node[anchor=base west, inner sep=0pt] at
+    ([xshift=#1, yshift=-#2]current page.north west) {#3};
+}
+\newcommand{\basecenter}[3]{
+  \node[anchor=base, inner sep=0pt] at
+    ([xshift=#1, yshift=-#2]current page.north west) {#3};
+}
+\newcommand{\northwest}[3]{
+  \node[anchor=north west, inner sep=0pt] at
+    ([xshift=#1, yshift=-#2]current page.north west) {#3};
+}
+\newcommand{\northcenter}[3]{
+  \node[anchor=north, inner sep=0pt] at
+    ([xshift=#1, yshift=-#2]current page.north west) {#3};
+}
+\newcommand{\ruleline}[3]{
+  \draw[line width=0.45pt]
+    ([xshift=#1, yshift=-#3]current page.north west) --
+    ([xshift=#2, yshift=-#3]current page.north west);
+}
+\newcommand{\diaryFormFont}{\diaryFang\fontsize{18pt}{20pt}\selectfont}
+\newcommand{\diaryBodyFont}{\diarySong\fontsize{14pt}{19pt}\selectfont}
+\newcommand{\diaryJournalBodyFont}{\diarySong\fontsize{12pt}{15pt}\selectfont}
+\newcommand{\diaryTableFont}{\diaryFang\fontsize{15pt}{17pt}\selectfont}
+\newcommand{\diaryPageFont}{\diarySong\fontsize{16pt}{18pt}\selectfont}
+\ctexset{
+  section = {format = {\centering\diaryHei\bfseries\Large}},
+  subsection = {format = {\diaryHei\bfseries\large}},
+  subsubsection = {format = {\diaryHei\bfseries\normalsize}}
+}
+\newcommand{\fixedline}[1]{\noindent\makebox[0pt][l]{#1}\\}
+\newcommand{\diaryDateRuleSegments}{%
+  \draw[line width=0.45pt, line cap=butt]
+    ([xshift=37.0mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=50.0mm, yshift=-54.35mm]current page.north west)
+    ([xshift=55.8mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=65.1mm, yshift=-54.35mm]current page.north west)
+    ([xshift=69.8mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=80.7mm, yshift=-54.35mm]current page.north west)
+    ([xshift=95.0mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=108.0mm, yshift=-54.35mm]current page.north west)
+    ([xshift=112.6mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=121.8mm, yshift=-54.35mm]current page.north west)
+    ([xshift=126.6mm, yshift=-54.35mm]current page.north west) --
+    ([xshift=137.5mm, yshift=-54.35mm]current page.north west);
+}
+\newcounter{journalpagecounter}
+\setcounter{journalpagecounter}{0}
+\newcommand{\journalpage}{
+  \stepcounter{journalpagecounter}
+  \pagecanvas{
+    \basewest{147mm}{20mm}{\diaryPageFont 实\hspace{0.25em}习\hspace{0.25em}日\hspace{0.25em}记}
+    \ruleline{31.5mm}{179mm}{26.5mm}
+    \ruleline{32mm}{177mm}{273mm}
+    \basewest{158mm}{280mm}{\diaryPageFont 第\hspace{0.4em}\thejournalpagecounter\hspace{0.4em}页}
+  }
+}
